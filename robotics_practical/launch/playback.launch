@@ -20,7 +20,7 @@
   	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_imu3" args="0 0 0 0 0 0 1 base_link base_filtered"/> 
 	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher" args="0 0 0 0 0 0 1 map odom"/>
 		<node pkg="robot_localization" type="ekf_localization_node" output="screen" name="ekf_se" clear_params="true">
-		<rosparam command="load" file="$(find robot_localization)/params/ekf_template.yaml" /> 
+		<rosparam command="load" file="$(find package_name)/config/ekf_configuration.yaml" /> 
   	</node>
 	<launch>
   	<node type="rviz" name="rviz" pkg="rviz" args="-d $(find package_name)/config/robotics_practical_hd.rviz" />
