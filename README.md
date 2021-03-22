@@ -18,3 +18,7 @@ link to google slides presentation: https://docs.google.com/presentation/d/1UXo_
 
 ``roslaunch robotics_practical playback.launch bagfile:=<BAG_FILE>``
 replace <BAG_FILE> with the filepath to your bagfile. For example: ``"/bagfiles/with_vectornav_output/filtered_topics/2019-10-25-12-36-48.bag"``
+
+The launchfile will replay the chosen bagfile, launch a preconfigured rviz session, perform all necessary transforms, start the EKF node, log all the odometry data and save it to csv files for visualization
+
+The output data is stored in ``output_data/`` in one csv file per Odometry publisher. This data can be visualized with by using ``python3 plot_odom.py --input=<DATA_DIR>`` and providing a path to the folder containing the csv files. Optionally the ``--no_gt``can be set signal that the ground truth data should not be plotted.
