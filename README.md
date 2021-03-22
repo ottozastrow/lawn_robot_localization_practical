@@ -1,4 +1,4 @@
-# lawn_robot_localization_practical
+# Beginner Practical: Lawn Robot Localization
 The goal of this project was to learn about ROS, Sensors and Kalman filters, as well as to employ filtering of GPS and IMU data, in order to test whether filtering increases the localization robustness.
 
 ## Approach
