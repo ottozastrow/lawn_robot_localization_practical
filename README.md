@@ -12,9 +12,7 @@ The measurement data is available in the form of bagfiles
 link to bagfiles: https://drive.google.com/file/d/16mKE89SpYCWMkU_XrrvHeFVmerjwThBf/view?usp=sharing
 link to google slides presentation: https://docs.google.com/presentation/d/1UXo_ObpeUY94QeIahlgv_8dERTovL3SQyROQ8bVYJHY/edit?usp=sharing
 
-## Experiments
 
-![Experiment 1](images/experiment1.png)
 
 ## Usage
 
@@ -24,3 +22,8 @@ replace <BAG_FILE> with the filepath to your bagfile. For example: ``"/bagfiles/
 The launchfile will replay the chosen bagfile, launch a preconfigured rviz session, perform all necessary transforms, start the EKF node, log all the odometry data and save it to csv files for visualization
 
 The output data is stored in ``output_data/`` in one csv file per Odometry publisher. This data can be visualized with by using ``python3 plot_odom.py --input=<DATA_DIR>`` and providing a path to the folder containing the csv files. Optionally the ``--no_gt``can be set signal that the ground truth data should not be plotted.
+
+## Experiments
+The plot in the figure below can be obtained from the plot_odom.py script as outlined above. It depicts selected Odometry publishers from a birds eye view. 
+
+![Experiment 1](images/experiment1.png)
