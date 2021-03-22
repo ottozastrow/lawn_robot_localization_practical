@@ -17,7 +17,7 @@ link to Google Slides presentation: https://docs.google.com/presentation/d/1UXo_
 ## Usage
 
 ``roslaunch robotics_practical playback.launch bagfile:=<BAG_FILE>``
-replace <BAG_FILE> with the filepath to your bagfile. For example: ``"/bagfiles/with_vectornav_output/filtered_topics/2019-10-25-12-36-48.bag"``
+replace <BAG_FILE> with the filepath to your bagfile. For example: ``"./bagfiles/with_vectornav_output/filtered_topics/2019-10-25-12-36-48.bag"``
 
 The launchfile will replay the chosen bagfile, launch a preconfigured rviz session, perform all necessary transforms, start the EKF node, log all the odometry data and save it to csv files for visualization
 

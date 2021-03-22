@@ -9,7 +9,6 @@ project(robotics_practical)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   rospy
-  robot_localization
 )
 
 ## System dependencies are found with CMake's conventions
@@ -160,7 +159,6 @@ include_directories(
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
    scripts/utm_transform_node.py
-   scripts/imu_transform_publisher.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
