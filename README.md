@@ -14,6 +14,8 @@ link to google slides presentation: https://docs.google.com/presentation/d/1UXo_
 
 ## Experiments
 
+![Experiment 1](images/experiment1.png)
+
 ## Usage
 
 ``roslaunch robotics_practical playback.launch bagfile:=<BAG_FILE>``
