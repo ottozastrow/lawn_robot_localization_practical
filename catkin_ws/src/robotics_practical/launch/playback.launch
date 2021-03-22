@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<launch>
+  	<arg name="bagfile" />
+  	<param name="bagfile_name" value="$(arg bagfile)"/>
+
+  	<param name="use_sim_time" value="true" />
+	<node name="utm_transform" pkg="robotics_practical" type="utm_transform_node.py" output="screen"/>
+	<node name="time_updaterm" pkg="robotics_practical" type="update_time_publisher.py" output="log"/>
+	<node name="odom_logger" pkg="robotics_practical" type="odom_logger.py" output="screen" />
+			<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_vectornav" args="0 0 0 -0.171, -0.253, -0.728, 0.615 map vectornav_2"/>
+	<node pkg="tf2_ros" type="static_transform_publisher" name="trailer" args="0.4 0.4 0 0 0 0 1 vectornav_2_rotated vectornav_trailer"/>
+	<node pkg="tf2_ros" type="static_transform_publisher" name="gps_trailer" args="0.4 -0.4 0 0 0 0 1 vectornav_gps vectornav_gps_trailer"/>
+  	<node name="shifter" pkg="robotics_practical" type="shifter.py" output="log"/>
+  	<node pkg="rosbag" type="play" required="true" name="player"
+	  output="log"
+	  args="$(find robotics_practical)$(arg bagfile) --clock -r 3.5"
+  	/>
+	 
+	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_imu" args="0 0 0 0 0 0 1 base_filtered imu_link"/>
+		<!--<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_imu2" args="0 0 0 0 0 0 1 base_link imu_link"/> -->
+  	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_imu3" args="0 0 0 0 0 0 1 base_link base_filtered"/> 
+	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher" args="0 0 0 0 0 0 1 map odom"/>
+		<node pkg="robot_localization" type="ekf_localization_node" output="screen" name="ekf_se" clear_params="true">
+		<rosparam command="load" file="$(find robot_localization)/params/ekf_template.yaml" /> 
+  	</node>
+
+
+	  <!--  
+	  <node name="imu_publisher" pkg="robotics_practical" type="imu_transform_publisher.py" output="screen" />
+	  <node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_gps" args="0 0 0 0 0 0 odom base_filtered"/>
+	  -->
+</launch>
