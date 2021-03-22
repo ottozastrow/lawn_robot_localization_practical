@@ -16,3 +16,4 @@ link to google slides presentation: https://docs.google.com/presentation/d/1UXo_
 
 ## Usage
 
+``roslaunch robotics_practical playback.launch bagfile:="/bagfiles/with_vectornav_output/filtered_topics/2019-10-25-12-36-48.bag"``
