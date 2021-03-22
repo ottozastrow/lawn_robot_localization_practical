@@ -1,19 +1,25 @@
 #!/usr/bin/python3
-""" listens to odom msg and publishes an updated version"""
+""" ROS Node that listens to given odom msg and publishes an updated version with the correct timestamp.
+Additionally the node will publish the respective transform if specified.
+
+The vectornav gps data does not include orientation data. In order to include the sensor mounting position offset this orientation data is needed. For this purpose the rotation_topic argument can be used.
+"""
 
 import geometry_msgs.msg
 from geometry_msgs.msg import Quaternion
 import rospy
 import tf2_ros
+import tf
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import Imu
 from sensor_msgs.msg import Imu
 from tf.transformations import quaternion_from_euler
 
-import tf
+
 
 class UpdatedPublisher():
     def __init__(self, topic, msgtype, frame=None, child_frame=None, rotation_topic= None, publish_updated_time=True):
+  
         self.msgtype = msgtype
         self.frame=frame
         self.update_time = publish_updated_time

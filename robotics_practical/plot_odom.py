@@ -1,3 +1,5 @@
+""" this file can be used to plot various odometry messages from a given experiment"""
+
 import argparse
 import csv
 import glob
@@ -52,13 +54,9 @@ def show_paths(data, args):
                 dotsize=20
             ax.scatter(x, y, label=sensor,
                    alpha=0.9, s=dotsize)
-    """ 
-    boxfig = matplotlib.patches.Rectangle((3.46,-10.00), 7.38, 10, angle=19.0, fill=False)
-    plt.xlim(-5, 15)
-    plt.ylim(-15, 5)
-    plt.gca().add_patch(boxfig)
-    """
+ 
     if not args.no_gt: 
+        # plot ground truth rectangle
         boxfig = matplotlib.patches.Rectangle((0,0), 10, 7.3, angle=19.0-90, fill=False)
         plt.xlim(-5, 15)
         plt.ylim(-15, 5)
@@ -75,6 +73,7 @@ def show_paths(data, args):
     plt.show()
 
 def find_nearest(array,value):
+    """finds value in array closest to the given data point"""
     idx = np.searchsorted(array, value, side="left")
     if idx > 0 and (idx == len(array)\
         or math.fabs(value - array[idx-1]) < math.fabs(value - array[idx])):

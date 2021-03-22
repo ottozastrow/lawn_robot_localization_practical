@@ -51,7 +51,7 @@ if __name__ == '__main__':
     rospy.init_node('odom_logger', anonymous=True)
     bagfile = rospy.get_param("/bagfile_name")
     
-    output_dir = "/home/ubuntu/tmp/odomdata_" + bagfile.split("/")[-1][:-4]
+    output_dir = "output_data/" + bagfile.split("/")[-1][:-4]
     
     OdomListener("/odometry/filtered", output_dir) 
     OdomListener("/vectornav/GPS/utm_odom/updated_shifted", output_dir) 

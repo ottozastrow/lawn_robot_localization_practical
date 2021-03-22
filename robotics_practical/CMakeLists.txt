@@ -9,6 +9,7 @@ project(robotics_practical)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   rospy
+  robot_localization
 )
 
 ## System dependencies are found with CMake's conventions

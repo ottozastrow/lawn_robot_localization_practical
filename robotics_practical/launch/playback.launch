@@ -13,20 +13,15 @@
   	<node name="shifter" pkg="robotics_practical" type="shifter.py" output="log"/>
   	<node pkg="rosbag" type="play" required="true" name="player"
 	  output="log"
-	  args="$(find robotics_practical)$(arg bagfile) --clock -r 3.5"
+	  args="$(find robotics_practical)$(arg bagfile) --clock -r 1.0"
   	/>
 	 
 	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_imu" args="0 0 0 0 0 0 1 base_filtered imu_link"/>
-		<!--<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_imu2" args="0 0 0 0 0 0 1 base_link imu_link"/> -->
   	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_imu3" args="0 0 0 0 0 0 1 base_link base_filtered"/> 
 	<node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher" args="0 0 0 0 0 0 1 map odom"/>
 		<node pkg="robot_localization" type="ekf_localization_node" output="screen" name="ekf_se" clear_params="true">
 		<rosparam command="load" file="$(find robot_localization)/params/ekf_template.yaml" /> 
   	</node>
-
-
-	  <!--  
-	  <node name="imu_publisher" pkg="robotics_practical" type="imu_transform_publisher.py" output="screen" />
-	  <node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher_gps" args="0 0 0 0 0 0 odom base_filtered"/>
-	  -->
+	<launch>
+  	<node type="rviz" name="rviz" pkg="rviz" args="-d $(find package_name)/config/robotics_practical_hd.rviz" />
 </launch>
