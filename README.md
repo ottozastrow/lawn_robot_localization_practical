@@ -1,8 +1,15 @@
+---
+title: "README"
+output: html_document
+bibliography: references.bibtex
+---
+
+
 # lawn_robot_localization_practical
 The goal of this project was to learn about ROS, Sensors and Kalman filters, as well as to employ filtering of GPS and IMU data, in order to test whether filtering increases the localization robustness.
 
 ## Approach
-The filtering was performed using an Extended Kalman Filter [-@Simon J. Julier and Jeffrey K. Uhlmann] (EKF) implementation from the robot localization package. In our case the Kalman Filter recieves data from two GPS sensors and an IMU sensor.
+The filtering was performed using an Extended Kalman Filter [-@ekf] (EKF) implementation from the robot localization package [-@robot_localization]. In our case the Kalman Filter recieves data from two GPS sensors and an IMU sensor.
 
 This repository includes several nodes to enable publishing and processing sensory data and the respective tf transforms. We also provide scripts for data visualization and a configureation file for the robot_localization package.
 The measurement data is available in the form of bagfiles
